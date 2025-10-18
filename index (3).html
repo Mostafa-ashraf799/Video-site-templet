@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INTER Video</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: black;
+      overflow: hidden;
+    }
+    #intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 3em;
+      letter-spacing: 5px;
+      cursor: pointer;
+      transition: opacity 1s ease;
+    }
+    #intro.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      display: none;
+    }
+    video.active {
+      display: block;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div id="intro">INTER</div>
+  <video id="myVideo" src="video.mp4"></video>
+
+  <script>
+    const intro = document.getElementById('intro');
+    const video = document.getElementById('myVideo');
+
+    intro.addEventListener('click', () => {
+      intro.classList.add('hidden');
+      setTimeout(() => {
+        intro.style.display = 'none';
+        video.classList.add('active');
+        video.play();
+      }, 800);
+    });
+  </script>
+
+</body>
+</html>
